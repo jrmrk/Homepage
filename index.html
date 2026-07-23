@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Tab</title>
+<style>
+  :root{
+    --bg:#131314;
+    --surface:#1e1f20;
+    --surface2:#282a2c;
+    --text:#e3e3e3;
+    --sub:#9aa0a6;
+    --accent:#8ab4f8;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Segoe UI', Roboto, -apple-system, sans-serif;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+  }
+  .phone{
+    width:100%;
+    max-width:480px;
+    padding:28px 16px 40px;
+  }
+
+  /* Search bar */
+  .search-bar{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:var(--surface);
+    border:1px solid #3c3f41;
+    border-radius:28px;
+    padding:12px 16px;
+    margin-bottom:24px;
+    cursor:pointer;
+    transition:background .15s;
+  }
+  .search-bar:hover{background:var(--surface2);}
+  .search-bar svg{flex-shrink:0;}
+  .search-bar span{color:var(--sub); font-size:15px;}
+  .mic-icon{margin-left:auto;}
+
+  /* Favorites row */
+  .favorites{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:28px;
+    padding:0 4px;
+  }
+  .fav-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    text-decoration:none;
+    color:var(--text);
+    width:70px;
+  }
+  .fav-icon{
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    background:var(--surface);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:600;
+    font-size:20px;
+    color:var(--accent);
+    border:1px solid #3c3f41;
+    transition:transform .12s, background .15s;
+  }
+  .fav-item:active .fav-icon{transform:scale(.92); background:var(--surface2);}
+  .fav-label{font-size:12px; color:var(--sub); text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:70px;}
+
+  /* Grid sections */
+  .grids{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+  .grid-box{
+    background:var(--surface);
+    border:1px solid #3c3f41;
+    border-radius:16px;
+    padding:14px;
+  }
+  .mini-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:10px;
+  }
+  .mini-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:4px;
+    text-decoration:none;
+    color:var(--text);
+  }
+  .mini-icon{
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:var(--surface2);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:600;
+    font-size:14px;
+    color:var(--accent);
+    transition:transform .12s;
+  }
+  .mini-item:active .mini-icon{transform:scale(.9);}
+  .mini-label{
+    font-size:9.5px;
+    color:var(--sub);
+    text-align:center;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    max-width:44px;
+  }
+</style>
+</head>
+<body>
+<div class="phone">
+
+  <!-- Google search bar -->
+  <a href="https://www.google.com" class="search-bar" style="text-decoration:none;">
+    <svg width="20" height="20" viewBox="0 0 48 48">
+      <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v9h11.8c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.6-9.48 6.6-16.16z"/>
+      <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.34l-7.11-5.52c-1.97 1.32-4.49 2.11-7.45 2.11-5.73 0-10.58-3.87-12.31-9.08H4.34v5.7C7.96 41.07 15.4 46 24 46z"/>
+      <path fill="#FBBC05" d="M11.69 28.17c-.44-1.32-.69-2.72-.69-4.17s.25-2.85.69-4.17v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.87l7.35-5.7z"/>
+      <path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.13l7.35 5.7c1.73-5.21 6.58-9.08 12.31-9.08z"/>
+    </svg>
+    <span>Search Google or type a URL</span>
+    <svg class="mic-icon" width="20" height="20" viewBox="0 0 24 24" fill="#9aa0a6">
+      <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5-3c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+    </svg>
+  </a>
+
+  <!-- 4 favorite circles -->
+  <div class="favorites">
+    <a href="https://www.google.com" class="fav-item">
+      <div class="fav-icon">G</div>
+      <div class="fav-label">Google</div>
+    </a>
+    <a href="https://www.google.com" class="fav-item">
+      <div class="fav-icon">G</div>
+      <div class="fav-label">Google</div>
+    </a>
+    <a href="https://www.google.com" class="fav-item">
+      <div class="fav-icon">G</div>
+      <div class="fav-label">Google</div>
+    </a>
+    <a href="https://www.google.com" class="fav-item">
+      <div class="fav-icon">G</div>
+      <div class="fav-label">Google</div>
+    </a>
+  </div>
+
+  <!-- 6 grid boxes, each 3x3 -->
+  <div class="grids" id="grids"></div>
+
+</div>
+
+<script>
+  const gridsContainer = document.getElementById('grids');
+  for (let box = 0; box < 6; box++) {
+    const gridBox = document.createElement('div');
+    gridBox.className = 'grid-box';
+    const miniGrid = document.createElement('div');
+    miniGrid.className = 'mini-grid';
+    for (let i = 0; i < 9; i++) {
+      const a = document.createElement('a');
+      a.href = 'https://www.google.com';
+      a.className = 'mini-item';
+      a.innerHTML = `<div class="mini-icon">G</div><div class="mini-label">Google</div>`;
+      miniGrid.appendChild(a);
+    }
+    gridBox.appendChild(miniGrid);
+    gridsContainer.appendChild(gridBox);
+  }
+</script>
+
+</body>
+</html>
